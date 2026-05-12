@@ -837,6 +837,170 @@
     footer { flex-direction: column; text-align: center; }
     .footer-tag { order: -1; }
   }
+
+  /* ── OUR WORK ── */
+  #our-work {
+    background: var(--grey);
+    padding: 100px 5%;
+  }
+
+  #our-work .section-label { color: var(--terracotta); }
+
+  #our-work h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--green);
+    margin-bottom: 0.6rem;
+  }
+
+  .work-intro {
+    font-size: 0.95rem;
+    color: rgba(30,58,47,0.6);
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+    max-width: 500px;
+  }
+
+  .work-filters {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .work-filter {
+    padding: 0.45rem 1.1rem;
+    border-radius: 100px;
+    border: 1px solid rgba(30,58,47,0.2);
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: var(--green);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .work-filter:hover { border-color: var(--terracotta); color: var(--terracotta); }
+  .work-filter.active { background: var(--green); border-color: var(--green); color: var(--cream); font-weight: 500; }
+
+  .work-grid {
+    columns: 3;
+    column-gap: 1rem;
+  }
+
+  .work-item {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    cursor: zoom-in;
+    background: var(--cream);
+  }
+
+  .work-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .work-item:hover img { transform: scale(1.03); }
+
+  .work-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(30,58,47,0.88) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem;
+  }
+
+  .work-item:hover .work-overlay { opacity: 1; }
+
+  .work-meta { color: var(--cream); }
+  .work-meta .wm-client { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terracotta); display: block; margin-bottom: 2px; }
+  .work-meta .wm-title { font-family: 'Fraunces', serif; font-size: 0.95rem; font-weight: 600; display: block; }
+  .work-meta .wm-tag { font-size: 0.72rem; color: rgba(250,247,242,0.55); margin-top: 2px; display: block; }
+
+  /* Lightbox */
+  .wlb {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,20,15,0.94);
+    z-index: 300;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    backdrop-filter: blur(8px);
+  }
+
+  .wlb.open { display: flex; }
+
+  .wlb-inner {
+    position: relative;
+    max-width: 520px;
+    width: 100%;
+  }
+
+  .wlb-inner img {
+    width: 100%;
+    height: auto;
+    max-height: 82vh;
+    object-fit: contain;
+    border-radius: 12px;
+    display: block;
+  }
+
+  .wlb-close {
+    position: absolute;
+    top: -40px; right: 0;
+    background: none; border: none;
+    color: var(--cream); font-size: 1.5rem;
+    cursor: pointer; opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  .wlb-close:hover { opacity: 1; }
+
+  .wlb-nav {
+    position: absolute;
+    top: 50%; transform: translateY(-50%);
+    background: rgba(250,247,242,0.12);
+    border: none; color: var(--cream);
+    width: 42px; height: 42px; border-radius: 50%;
+    cursor: pointer; font-size: 1.1rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+
+  .wlb-nav:hover { background: rgba(250,247,242,0.22); }
+  .wlb-prev { left: -54px; }
+  .wlb-next { right: -54px; }
+
+  .wlb-cap {
+    margin-top: 0.9rem;
+    text-align: center;
+  }
+
+  .wlb-cap .wm-client { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terracotta); display: block; margin-bottom: 3px; }
+  .wlb-cap .wm-title { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; color: var(--cream); display: block; }
+  .wlb-cap .wm-tag { font-size: 0.78rem; color: rgba(250,247,242,0.45); margin-top: 3px; display: block; }
+
+  @media (max-width: 900px) {
+    .work-grid { columns: 2; }
+    .wlb-prev { left: -8px; }
+    .wlb-next { right: -8px; }
+  }
+
+  @media (max-width: 580px) { .work-grid { columns: 1; } }
+
 </style>
 </head>
 <body>
@@ -848,6 +1012,7 @@
     <li><a href="#services">Services</a></li>
     <li><a href="#how">How It Works</a></li>
     <li><a href="#testimonials">Results</a></li>
+    <li><a href="#our-work">Our Work</a></li>
     <li><a href="#contact" class="btn-nav">Get More Bookings</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -860,6 +1025,7 @@
   <a href="#services" class="mobile-link">Services</a>
   <a href="#how" class="mobile-link">How It Works</a>
   <a href="#testimonials" class="mobile-link">Results</a>
+  <a href="#our-work" class="mobile-link">Our Work</a>
   <a href="#contact" class="btn-nav-mobile">Get More Bookings</a>
 </div>
 
@@ -1021,6 +1187,168 @@
   </div>
 </section>
 
+
+<!-- OUR WORK -->
+<section id="our-work">
+  <span class="section-label fade-in">Our Work</span>
+  <h2 class="fade-in">Ads That Fill Booking Calendars.</h2>
+  <p class="work-intro fade-in">Real creatives. Real pet salons. All built to convert local dog owners into paying clients.</p>
+
+  <div class="work-filters fade-in">
+    <button class="work-filter active" data-wf="all">All</button>
+    <button class="work-filter" data-wf="grooming">Grooming</button>
+    <button class="work-filter" data-wf="boarding">Boarding & Daycare</button>
+    <button class="work-filter" data-wf="mobile">Mobile Salons</button>
+    <button class="work-filter" data-wf="feed">Feed (1:1)</button>
+    <button class="work-filter" data-wf="story">Story (9:16)</button>
+  </div>
+
+  <div class="work-grid" id="workGrid">
+
+    <div class="work-item fade-in" data-wf="boarding story">
+      <img src="images/No_1.png" alt="Great Woof Lodge - The guilt fades fast">
+      <div class="work-overlay"><div class="work-meta">
+        <span class="wm-client">Great Woof Lodge</span>
+        <span class="wm-title">The guilt fades fast.</span>
+        <span class="wm-tag">Boarding · Story 9:16</span>
+      </div></div>
+    </div>
+
+    <div class="work-item fade-in fade-in-delay-1" data-wf="boarding feed">
+      <img src="images/2.png" alt="Great Woof Lodge - Room to Run">
+      <div class="work-overlay"><div class="work-meta">
+        <span class="wm-client">Great Woof Lodge</span>
+        <span class="wm-title">Room to Run. Life Well Lived.</span>
+        <span class="wm-tag">Boarding & Daycare · Feed 1:1</span>
+      </div></div>
+    </div>
+
+    <div class="work-item fade-in fade-in-delay-2" data-wf="mobile grooming story">
+      <img src="images/Ad_1.png" alt="Heather's Mobile Pet Salon - Grooming done for you">
+      <div class="work-overlay"><div class="work-meta">
+        <span class="wm-client">Heather's Mobile Pet Salon</span>
+        <span class="wm-title">Grooming, done for you.</span>
+        <span class="wm-tag">Mobile Grooming · Story 9:16</span>
+      </div></div>
+    </div>
+
+    <div class="work-item fade-in" data-wf="mobile grooming feed">
+      <img src="images/Ad_2.png" alt="Heather's Mobile Pet Salon - Your pet's glow-up delivered">
+      <div class="work-overlay"><div class="work-meta">
+        <span class="wm-client">Heather's Mobile Pet Salon</span>
+        <span class="wm-title">Your pet's glow-up, delivered.</span>
+        <span class="wm-tag">Mobile Grooming · Feed 1:1</span>
+      </div></div>
+    </div>
+
+    <div class="work-item fade-in fade-in-delay-1" data-wf="mobile grooming story">
+      <img src="images/Ad_3.png" alt="Heather's Mobile Pet Salon - You look absolutely perfect">
+      <div class="work-overlay"><div class="work-meta">
+        <span class="wm-client">Heather's Mobile Pet Salon</span>
+        <span class="wm-title">You look absolutely perfect.</span>
+        <span class="wm-tag">Mobile Grooming · Story 9:16</span>
+      </div></div>
+    </div>
+
+    <div class="work-item fade-in fade-in-delay-2" data-wf="mobile grooming feed">
+      <img src="images/Ad_4.png" alt="Heather's Mobile Pet Salon - Grooming done right">
+      <div class="work-overlay"><div class="work-meta">
+        <span class="wm-client">Heather's Mobile Pet Salon</span>
+        <span class="wm-title">Grooming done right.</span>
+        <span class="wm-tag">Mobile Grooming · Feed 1:1</span>
+      </div></div>
+    </div>
+
+    <div class="work-item fade-in" data-wf="boarding feed">
+      <img src="images/Ad_Concept_1.png" alt="Great Woof Lodge - You Leave. They Relax.">
+      <div class="work-overlay"><div class="work-meta">
+        <span class="wm-client">Great Woof Lodge</span>
+        <span class="wm-title">You Leave. They Relax.</span>
+        <span class="wm-tag">Boarding · Feed 1:1</span>
+      </div></div>
+    </div>
+
+    <div class="work-item fade-in fade-in-delay-1" data-wf="grooming feed">
+      <img src="images/Creative_1.png" alt="Toe Beans & Things - Transform your pup today">
+      <div class="work-overlay"><div class="work-meta">
+        <span class="wm-client">Toe Beans & Things</span>
+        <span class="wm-title">Transform your pup today.</span>
+        <span class="wm-tag">Grooming · Feed 1:1</span>
+      </div></div>
+    </div>
+
+    <div class="work-item fade-in fade-in-delay-2" data-wf="grooming feed">
+      <img src="images/Creative_4.png" alt="Toe Beans & Things - Happy Pets, Beautiful Results">
+      <div class="work-overlay"><div class="work-meta">
+        <span class="wm-client">Toe Beans & Things</span>
+        <span class="wm-title">Happy Pets, Beautiful Results.</span>
+        <span class="wm-tag">Grooming · Feed 1:1</span>
+      </div></div>
+    </div>
+
+    <div class="work-item fade-in" data-wf="grooming feed">
+      <img src="images/No_2.png" alt="Dirty Dog Salon - Total Transformation">
+      <div class="work-overlay"><div class="work-meta">
+        <span class="wm-client">Dirty Dog Salon</span>
+        <span class="wm-title">Total Transformation.</span>
+        <span class="wm-tag">Grooming · Feed 1:1</span>
+      </div></div>
+    </div>
+
+    <div class="work-item fade-in fade-in-delay-1" data-wf="grooming story">
+      <img src="images/No_3.png" alt="Dirty Dog Salon - He's safe. You can breathe.">
+      <div class="work-overlay"><div class="work-meta">
+        <span class="wm-client">Dirty Dog Salon</span>
+        <span class="wm-title">He's safe. You can breathe.</span>
+        <span class="wm-tag">Grooming · Story 9:16</span>
+      </div></div>
+    </div>
+
+    <div class="work-item fade-in fade-in-delay-2" data-wf="grooming feed">
+      <img src="images/No_4.png" alt="Dirty Dog Salon - We Clean Up Real Nice">
+      <div class="work-overlay"><div class="work-meta">
+        <span class="wm-client">Dirty Dog Salon</span>
+        <span class="wm-title">We Clean Up Real Nice.</span>
+        <span class="wm-tag">Grooming · Feed 1:1</span>
+      </div></div>
+    </div>
+
+    <div class="work-item fade-in" data-wf="grooming story">
+      <img src="images/No_5.png" alt="Dirty Dog Salon - Because they deserve the best">
+      <div class="work-overlay"><div class="work-meta">
+        <span class="wm-client">Dirty Dog Salon</span>
+        <span class="wm-title">Because they deserve the best.</span>
+        <span class="wm-tag">Grooming · Story 9:16</span>
+      </div></div>
+    </div>
+
+    <div class="work-item fade-in fade-in-delay-1" data-wf="grooming feed">
+      <img src="images/3.png" alt="Dirty Dog Salon - Hi Plano, we know your dog's name">
+      <div class="work-overlay"><div class="work-meta">
+        <span class="wm-client">Dirty Dog Salon</span>
+        <span class="wm-title">Hi Plano — we know your dog's name.</span>
+        <span class="wm-tag">Grooming · Feed 1:1</span>
+      </div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="wlb" id="wlb">
+  <div class="wlb-inner">
+    <button class="wlb-close" id="wlbClose">✕</button>
+    <button class="wlb-nav wlb-prev" id="wlbPrev">&#8592;</button>
+    <button class="wlb-nav wlb-next" id="wlbNext">&#8594;</button>
+    <img src="" alt="" id="wlbImg">
+    <div class="wlb-cap">
+      <span class="wm-client" id="wlbClient"></span>
+      <span class="wm-title" id="wlbTitle"></span>
+      <span class="wm-tag" id="wlbTag"></span>
+    </div>
+  </div>
+</div>
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner">
@@ -1117,6 +1445,77 @@
   }, { threshold: 0.12 });
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Work section filter
+  const workFilters = document.querySelectorAll('.work-filter');
+  const workItems = document.querySelectorAll('.work-item');
+
+  workFilters.forEach(btn => {
+    btn.addEventListener('click', () => {
+      workFilters.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.wf;
+      workItems.forEach(item => {
+        item.style.display = (f === 'all' || item.dataset.wf.includes(f)) ? '' : 'none';
+      });
+    });
+  });
+
+  // Work lightbox
+  let wlbIndex = 0;
+  const visibleWorkItems = () => Array.from(document.querySelectorAll('.work-item:not([style*="display: none"])'));
+
+  document.getElementById('workGrid').addEventListener('click', e => {
+    const item = e.target.closest('.work-item');
+    if (!item) return;
+    const items = visibleWorkItems();
+    wlbIndex = items.indexOf(item);
+    openWlb(items[wlbIndex]);
+  });
+
+  function openWlb(item) {
+    const img = item.querySelector('img');
+    const meta = item.querySelector('.work-meta');
+    document.getElementById('wlbImg').src = img.src;
+    document.getElementById('wlbImg').alt = img.alt;
+    document.getElementById('wlbClient').textContent = meta?.querySelector('.wm-client')?.textContent || '';
+    document.getElementById('wlbTitle').textContent = meta?.querySelector('.wm-title')?.textContent || '';
+    document.getElementById('wlbTag').textContent = meta?.querySelector('.wm-tag')?.textContent || '';
+    document.getElementById('wlb').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  document.getElementById('wlbClose').addEventListener('click', () => {
+    document.getElementById('wlb').classList.remove('open');
+    document.body.style.overflow = '';
+  });
+
+  document.getElementById('wlb').addEventListener('click', e => {
+    if (e.target === document.getElementById('wlb')) {
+      document.getElementById('wlb').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+  document.getElementById('wlbPrev').addEventListener('click', () => {
+    const items = visibleWorkItems();
+    wlbIndex = (wlbIndex - 1 + items.length) % items.length;
+    openWlb(items[wlbIndex]);
+  });
+
+  document.getElementById('wlbNext').addEventListener('click', () => {
+    const items = visibleWorkItems();
+    wlbIndex = (wlbIndex + 1) % items.length;
+    openWlb(items[wlbIndex]);
+  });
+
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('wlb').classList.contains('open')) return;
+    if (e.key === 'Escape') { document.getElementById('wlb').classList.remove('open'); document.body.style.overflow = ''; }
+    if (e.key === 'ArrowLeft') document.getElementById('wlbPrev').click();
+    if (e.key === 'ArrowRight') document.getElementById('wlbNext').click();
+  });
+
 </script>
 </body>
 </html>
